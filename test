@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test de orientación DCV - FAD UNAM</title>
+  <script>
+    const areas = {
+      edicion: {
+        name: "Edición Gráfica",
+        description:
+          "Te interesa estructurar contenidos editoriales como libros, revistas o publicaciones digitales. Puedes destacar en diseño editorial y la tipografía."
+      },
+      ilustracion: {
+        name: "Gráfica e Ilustración",
+        description:
+          "Te sientes cómodo/a con la expresión visual, la creación de personajes, narrativas ilustradas y lenguaje gráfico propio."
+      },
+      iconicidad: {
+        name: "Iconicidad y Entornos",
+        description:
+          "Te interesa el diseño en el espacio, sistemas de señalización, mapas y elementos visuales que guían y orientan en entornos físicos o digitales."
+      },
+      hipermedia: {
+        name: "Medios Audiovisuales e Hipermedia",
+        description:
+          "Tu perfil se inclina por la producción audiovisual, animaciones, multimedia e interacción digital."
+      }
+    };
+
+    function calculateResult() {
+      const form = document.forms.orientationTest;
+      const counts = {
+        edicion: 0,
+        ilustracion: 0,
+        iconicidad: 0,
+        hipermedia: 0
+      };
+
+      for (let i = 1; i <= 19; i++) {
+        const answer = form[`q${i}`].value;
+        if (answer) counts[answer]++;
+      }
+
+      const topArea = Object.keys(counts).reduce((a, b) =>
+        counts[a] >= counts[b] ? a : b
+      );
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h2> Tu área ideal es: ${areas[topArea].name}</h2>
+        <p>${areas[topArea].description}</p>
+      `;
+      resultDiv.style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <h1>Test ¿Qué área de profundización es para ti? – Diseño y Comunicación Visual FAD</h1>
+  <form id="orientationTest">
+    <fieldset>
+      <legend>1. ¿Qué tipo de proyecto te entusiasma más desarrollar?</legend>
+      <label><input type="radio" name="q1" value="edicion"> Diseñar libros o revistas</label><br>
+      <label><input type="radio" name="q1" value="ilustracion"> Crear personajes ilustrados</label><br>
+      <label><input type="radio" name="q1" value="iconicidad"> Diseñar identidades gráficas y señaléticas</label><br>
+      <label><input type="radio" name="q1" value="hipermedia"> Editar videos / grabar cortometrajes / hacer animaciones</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. ¿Qué herramienta disfrutas más usar?</legend>
+      <label><input type="radio" name="q2" value="edicion"> InDesign</label><br>
+      <label><input type="radio" name="q2" value="ilustracion"> Técnicas análogas /Procreate / Photoshop e Illustrator</label><br>
+      <label><input type="radio" name="q2" value="iconicidad"> Illustrator / Blender / SketchUp</label><br>
+      <label><input type="radio" name="q2" value="hipermedia"> After Effects / Premiere Pro / </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. ¿Cuál de estas frases describe mejor tu estilo de trabajo?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Me gusta estructurar información clara. Ser organizado y tener una estructura.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Libre y expresivo, priorizo la creatividad</label><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Estratégico, me interesa resolver problemas espaciales y de identidad </label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Dinámico, me gusta integrar la tecnología</label>
+    </fieldset>
+
+    </fieldset>
+    <legend>4. ¿Qué tipo de contenido consumes en tu tiempo libre?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Revistas, blogs y libros sobre cualquier tema de mi interés.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Cómics, viñetas, mangas, videos de tutoriales o cuentas de fotógrafos e ilustradores en redes.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Fotografía e imágenes de arquitectura, diseño de interiores, exposiciones de museos o proyectos de branding innovador.<label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Videojuegos, cine, anime, series animadas</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>5. Si tuvieras que elegir un proyecto final, ¿cuál sería?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Portadas de libros, un catálogo o una revista.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Un libro infantil, un cómic o un mural de algún tema de tu interés.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> La identidad visual de una marca, el ícono de una app o el diseño de algún envase.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Un documental, un video musical, cortometraje o una animación </label>
+      </fieldset>
+
+      </fieldset>
+      <legend>6.¿Qué te motiva más al crear?</legend>
+      <label><input type="radio" name="q3" value="edicion"> La claridad, organización y armonía visual.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Expresar tus emociones visualmente.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Resolver problemas espaciales, diseñar espacios y gráficos funcionales.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Usar tecnologías innovadoras y medios digitales</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>7.¿En qué proyectos preferirías trabajar?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Proyectos editoriales o de comunicación impresa.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Proyectos artísticos o campañas con componentes visuales.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Diseño de identidad y señalética.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Producciones audiovisuales, animación o experiencias interactivas.</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>8.¿Qué asignatura has disfrutado más?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Tipografía.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Dibujo.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Diseño integrador.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Recursos tecnológicos para el diseño.</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>9. ¿Cómo te defines en equipo?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Metódico y organizado.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Creativo con un estilo único y una gran imaginación><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Analítico.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Innovador </label>
+      </fieldset>
+
+
+      </fieldset>
+      <legend>10. ¿En qué industria te gustaría trabajar?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Editoriales o agencias de diseño gráfico.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Estudios de ilustración o arte conceptual.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Empresas de branding o diseño de experiencias.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Productoras audiovisuales o estudios cinematográficos</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>11. ¿Qué frase te identifica?</legend>
+      <label><input type="radio" name="q3" value="edicion"> "Todo está en los detalles".</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> "Cada trazo cuenta una historia".><br>
+      <label><input type="radio" name="q3" value="iconicidad"> "El diseño debe funcionar con su contexto".</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> "El futuro está en la tecnología"</label>
+      </fieldset>
+    
+      </fieldset>
+      <legend>12. ¿Qué taller extracurricular elegirías?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Encuadernación.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Diseño de sketchbook.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Diseño de stand creativo.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Creación de videojuegos</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>13. ¿Qué te frustra más al diseñar?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Errores en la jerarquía visual.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Limitaciones para expresar tu estilo personal.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Proyectos que ignoran el contexto o dejan de lado la funcionalidad.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Limitaciones de recursos tecnológicos</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>14. Elige un referente profesional:</legend>
+      <label><input type="radio" name="q3" value="edicion"> Paula Scher (diseño editorial y branding)..</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Hayao Miyazaki (arte narrativo e ilustración).><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Stefan Sagmeister (diseño experimental en espacios).</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Chris Milk (narrativa interactiva y realidad virtual).</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>15. ¿Qué habilidad quieres fortalecer?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Diagramación. </label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Técnicas de ilustración análoga/digital.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Diseño de sistemas de identidad.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Edición de video o animación 3D.</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>16. ¿Qué aspecto destacan en tus proyectos?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Claridad visual y manejo de retículas.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Originalidad y calidad artística.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Coherencia.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Uso innovador de recursos tecnológicos</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>17. ¿Cómo abordas un problema de diseño?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Analizando la estructura visual.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Bocetando ideas hasta encontrar un estilo impactante.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Investigando el contexto y necesidades del usuario.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Experimentando con formatos audiovisuales o interactivos</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>18. ¿Qué te atrae de un proyecto?</legend>
+      <label><input type="radio" name="q3" value="edicion"> Retos técnicos de composición.</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Libertad para explorar técnicas gráficas.><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Oportunidad de crear soluciones para marcas.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Integrar sonido, movimiento y tecnología.</label>
+      </fieldset>
+
+      </fieldset>
+      <legend>19. ¿Qué frase te inspira?</legend>
+      <label><input type="radio" name="q3" value="edicion"> "El diseño es donde la ciencia y el arte se equilibran"..</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> "El arte borra las fronteras entre lo real y lo imaginario"><br>
+      <label><input type="radio" name="q3" value="iconicidad"> "El buen diseño es invisible, solo se nota cuando falta".</label><br>
+      <label><input type="radio" name="q3" value="hipermedia">  "La innovación une creatividad y tecnología".</label>
+      </fieldset>
+
+
+      </fieldset>
+      <legend>20. Elige el color que más te guste</legend>
+      <label><input type="radio" name="q3" value="edicion"> Blanco</label><br>
+      <label><input type="radio" name="q3" value="ilustracion"> Amarillo><br>
+      <label><input type="radio" name="q3" value="iconicidad"> Morado.</label><br>
+      <label><input type="radio" name="q3" value="hipermedia"> Azul.</label>
+      </fieldset>
+
+
+    <button type="button" onclick="calculateResult()">Ver resultado</button>
+  </form>
+
+  <div id="result" style="display:none; margin-top: 1em; padding: 1em; background-color: #FFFFFF; border-left: 5px solid #007BFF;"></div>
+</body>
+</html>
